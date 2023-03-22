@@ -6,8 +6,8 @@ export default class ModelHelper {
     }
 
     workerPath = ''
-    worker = new Worker(this.workerPath)
-    controller = new Controller(this.worker)
+    worker = null
+    controller = null
 
     /**
      * 初始化，创建 canvas 和 worker 线程
@@ -19,7 +19,8 @@ export default class ModelHelper {
         }
 
         const offscreen = canvas.transferControlToOffscreen()
-
+        this.worker = new Worker(this.workerPath)
+        this.controller = new Controller(this.worker)
         this.worker.postMessage({
             type: EVENTS.INIT,
             canvas: offscreen

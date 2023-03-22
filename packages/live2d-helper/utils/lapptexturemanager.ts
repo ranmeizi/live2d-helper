@@ -91,7 +91,7 @@ export class LAppTextureManager {
       }
 
       // テクスチャにピクセルを書き込む
-      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img.res);
 
       // ミップマップを生成
       gl.generateMipmap(gl.TEXTURE_2D);
@@ -175,4 +175,59 @@ export class TextureInfo {
   height = 0; // 高さ
   usePremultply: boolean; // Premult処理を有効にするか
   fileName: string; // ファイル名
+}
+
+class Image {
+  onload = function () { }
+  res = undefined
+  _src = ''
+  width = 0
+  height = 0
+
+  set src(value) {
+    this._src = value
+    self[value] = this
+    this.download()
+  }
+
+  get src() {
+    return this._src
+  }
+
+  download() {
+    fetch(this.src, {
+      headers: {
+        "Content-Type": "image/png"
+      }
+    }).then(res => res.arrayBuffer())
+      .then(async buffer => {
+        // console.log(blob)
+
+        // this.res =new ImageData((new Uint8ClampedArray(buffer)), 256, 256)
+        let imageDecoder = new ImageDecoder({
+          type: "image/png",
+          data: buffer
+        });
+        const { image } = await imageDecoder.decode()
+        this.height = image.displayHeight
+        this.width = image.displayWidth
+        const buf = new Uint8ClampedArray(this.height * this.width * 4)
+        console.log(image, 'image')
+        await image.copyTo(buf)
+        swapU8CA(buf)
+        const id =  new ImageData(buf, this.width, this.height)
+
+
+        this.res =id
+        this.onload()
+      })
+  }
+}
+
+function swapU8CA(array) {
+  for (let i = 0; i < array.length; i += 4) {
+    const temp = array[i]
+    array[i] = array[i + 2]
+    array[i + 2] = temp
+  }
 }

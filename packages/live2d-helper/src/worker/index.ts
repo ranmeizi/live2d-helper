@@ -1,13 +1,17 @@
+importScripts("./live2dcubismcore.min.js");
+
 import * as EVENTS from '../Events'
 import { LAppDelegate } from '../../utils/lappdelegate';
 
+
 const controllers = {
-    [EVENTS.INIT]({canvas}) {
+    [EVENTS.INIT]({ canvas }) {
         if (LAppDelegate.getInstance().initialize(canvas) == false) {
             return;
-          }
-        
-          LAppDelegate.getInstance().run();
+        }
+
+        LAppDelegate.getInstance().run();
+        console.log('收到init')
     },
     [EVENTS.LOAD_MODEL]() {
 
