@@ -6,8 +6,12 @@
 
 [example](./packages/example/readme.md)
 
+
 ### run
 
+build live2d-helper  
+``` yarn workspace live2d-helper build ```  
+run example  
 ``` yarn workspace example start ```
 
 

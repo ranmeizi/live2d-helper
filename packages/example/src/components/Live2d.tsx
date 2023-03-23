@@ -7,6 +7,7 @@ export default function Live2d() {
 
   useEffect(() => {
     // 初始化
+    init()
   }, []);
 
   function init() {
@@ -31,7 +32,7 @@ export default function Live2d() {
 
   return (
     <div>
-      <button onClick={init}>初始化</button>
+      <button onClick={init} disabled>初始化</button>
       <div>
         <div>加载模型</div>
         <div>

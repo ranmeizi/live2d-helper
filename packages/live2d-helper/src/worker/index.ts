@@ -12,7 +12,6 @@ const controllers = {
         }
 
         LAppDelegate.getInstance().run();
-        console.log(LAppDelegate.getInstance(), 'KANKAN')
         // @ts-ignore
         self.__kankan = LAppDelegate.getInstance()
     },
@@ -23,7 +22,7 @@ const controllers = {
         LAppLive2DManager.getInstance()._custChangeScene({ name, resourcePath })
     },
     [EVENTS.DO_MOTION]() {
-
+        // TODO
     },
     [EVENTS.CANVAS_EVENT]({ e, rect }) {
         e.target = {

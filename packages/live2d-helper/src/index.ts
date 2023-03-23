@@ -17,6 +17,8 @@ export default class ModelHelper {
     workerPath: string
     worker: Worker
 
+    isActive = false
+
     /**
      * 初始化，创建 canvas 和 worker 线程
      */
@@ -24,6 +26,10 @@ export default class ModelHelper {
         if (!canvas.transferControlToOffscreen) {
             // 报错 不要用了
             throw new ReferenceError("live2d-helper,make sure your browser support OffscreenCanvas")
+        }
+        console.log(this.isActive)
+        if (this.isActive) {
+            return
         }
 
         const offscreen = canvas.transferControlToOffscreen()
@@ -35,6 +41,8 @@ export default class ModelHelper {
             type: EVENTS.INIT,
             canvas: offscreen
         }, [offscreen]);
+
+        this.isActive = true
     }
 
     addEvent(canvas: HTMLCanvasElement) {
