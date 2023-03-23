@@ -1,6 +1,6 @@
 {
   "name": "@bomon/live2d-helper",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/index.js",
   "types": "dist/types.d.ts",
   "author": "boboan",
