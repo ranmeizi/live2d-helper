@@ -10,7 +10,8 @@
   "FileReferences": {
     "Moc": "草神.moc3",
     "Textures": [
-      "草神.4096/texture_00.png"
+      "草神.4096/texture_00.png",
+      "草神.4096/texture_01.png"
     ],
     "Physics": "草神.physics3.json",
     "PhysicsV2": {

@@ -2,6 +2,7 @@ importScripts("./live2dcubismcore.min.js");
 
 import * as EVENTS from '../Events'
 import { LAppDelegate } from '../../utils/lappdelegate';
+import { LAppLive2DManager } from '../../utils/lapplive2dmanager';
 
 
 const controllers = {
@@ -11,10 +12,12 @@ const controllers = {
         }
 
         LAppDelegate.getInstance().run();
-        console.log('收到init')
     },
-    [EVENTS.LOAD_MODEL]() {
-
+    [EVENTS.LOAD_MODEL]({
+        resourcePath,
+        name
+    }) {
+        LAppLive2DManager.getInstance()._custChangeScene({ name, resourcePath })
     },
     [EVENTS.DO_MOTION]() {
 

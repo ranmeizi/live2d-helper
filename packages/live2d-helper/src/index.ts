@@ -1,13 +1,21 @@
 import * as EVENTS from './Events'
 
+interface IModelHelperInit {
+    resourcePath: string // 资源地址
+    workerPath: string // worker 地址
+}
+
 export default class ModelHelper {
-    constructor(workerPath: string) {
+    constructor({
+        resourcePath,
+        workerPath
+    }: IModelHelperInit) {
+        this.resourcePath = resourcePath
         this.workerPath = workerPath
     }
-
-    workerPath = ''
-    worker = null
-    controller = null
+    resourcePath: string
+    workerPath: string
+    worker: Worker
 
     /**
      * 初始化，创建 canvas 和 worker 线程
@@ -20,26 +28,24 @@ export default class ModelHelper {
 
         const offscreen = canvas.transferControlToOffscreen()
         this.worker = new Worker(this.workerPath)
-        this.controller = new Controller(this.worker)
         this.worker.postMessage({
             type: EVENTS.INIT,
             canvas: offscreen
         }, [offscreen]);
     }
 
-}
 
-class Controller {
-    constructor(worker: Worker) {
-
-    }
     /**
      * 加载模型
      * 销毁上一个模型
-     * @param path 模型path
+     * @param name 模型 name
      */
-    loadModel(path: string) {
-
+    loadModel(name: string) {
+        this.worker.postMessage({
+            type: EVENTS.LOAD_MODEL,
+            resourcePath: this.resourcePath,
+            name: name
+        });
     }
 
     doMotion(name: string) {

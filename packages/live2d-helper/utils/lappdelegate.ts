@@ -276,7 +276,7 @@ export class LAppDelegate {
     CubismFramework.initialize();
 
     // load model
-    LAppLive2DManager.getInstance();
+    // LAppLive2DManager.getInstance();
 
     LAppPal.updateTime();
 

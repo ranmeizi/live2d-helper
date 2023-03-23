@@ -160,38 +160,6 @@ export class LAppLive2DManager {
     }
   }
 
-  /**
-   * 次のシーンに切りかえる
-   * サンプルアプリケーションではモデルセットの切り替えを行う。
-   */
-  public nextScene(): void {
-    const no: number = (this._sceneIndex + 1) % LAppDefine.ModelDirSize;
-    this.changeScene(no);
-  }
-
-  /**
-   * シーンを切り替える
-   * サンプルアプリケーションではモデルセットの切り替えを行う。
-   */
-  public changeScene(index: number): void {
-    this._sceneIndex = index;
-    if (LAppDefine.DebugLogEnable) {
-      LAppPal.printMessage(`[APP]model index: ${this._sceneIndex}`);
-    }
-
-    // ModelDir[]に保持したディレクトリ名から
-    // model3.jsonのパスを決定する。
-    // ディレクトリ名とmodel3.jsonの名前を一致させておくこと。
-    const model: string = LAppDefine.ModelDir[index];
-    const modelPath: string = LAppDefine.ResourcesPath + model + '/';
-    let modelJsonName: string = LAppDefine.ModelDir[index];
-    modelJsonName += '.model3.json';
-
-    this.releaseAllModel();
-    this._models.pushBack(new LAppModel());
-    this._models.at(0).loadAssets(modelPath, modelJsonName);
-  }
-
   public setViewMatrix(m: CubismMatrix44) {
     for (let i = 0; i < 16; i++) {
       this._viewMatrix.getArray()[i] = m.getArray()[i];
@@ -204,13 +172,20 @@ export class LAppLive2DManager {
   constructor() {
     this._viewMatrix = new CubismMatrix44();
     this._models = new csmVector<LAppModel>();
-    this._sceneIndex = 0;
-    this.changeScene(this._sceneIndex);
+  }
+
+  _custChangeScene({ name, resourcePath }) {
+    const model: string = name;
+    const modelPath: string = resourcePath + model + '/';
+
+    this.releaseAllModel();
+    this._models.pushBack(new LAppModel());
+    this._models.at(0).loadAssets(modelPath, model + '.model3.json');
   }
 
   _viewMatrix: CubismMatrix44; // モデル描画に用いるview行列
   _models: csmVector<LAppModel>; // モデルインスタンスのコンテナ
-  _sceneIndex: number; // 表示するシーンのインデックス値
+
   // モーション再生終了のコールバック関数
   _finishedMotion = (self: ACubismMotion): void => {
     LAppPal.printMessage('Motion Finished:');
