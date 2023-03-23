@@ -23,6 +23,13 @@ export let frameBuffer: WebGLFramebuffer | null = null;
  * Cubism SDKの管理を行う。
  */
 export class LAppDelegate {
+  static onTouchBegan = onTouchBegan
+  static onTouchMoved = onTouchMoved
+  static onTouchEnded = onTouchEnded
+  static onTouchCancel = onTouchCancel
+  static onClickBegan = onClickBegan
+  static onMouseMoved = onMouseMoved
+  static onClickEnded = onClickEnded
   /**
    * クラスのインスタンス（シングルトン）を返す。
    * インスタンスが生成されていない場合は内部でインスタンスを生成する。
@@ -52,7 +59,7 @@ export class LAppDelegate {
    * APPに必要な物を初期化する。
    */
   public initialize(offscreenCanvas: OffscreenCanvas): boolean {
-    canvas= offscreenCanvas
+    canvas = offscreenCanvas
 
     // glコンテキストを初期化
     // @ts-ignore
@@ -274,9 +281,6 @@ export class LAppDelegate {
 
     // initialize cubism
     CubismFramework.initialize();
-
-    // load model
-    // LAppLive2DManager.getInstance();
 
     LAppPal.updateTime();
 

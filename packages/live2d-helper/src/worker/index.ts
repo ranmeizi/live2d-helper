@@ -12,6 +12,9 @@ const controllers = {
         }
 
         LAppDelegate.getInstance().run();
+        console.log(LAppDelegate.getInstance(), 'KANKAN')
+        // @ts-ignore
+        self.__kankan = LAppDelegate.getInstance()
     },
     [EVENTS.LOAD_MODEL]({
         resourcePath,
@@ -21,6 +24,22 @@ const controllers = {
     },
     [EVENTS.DO_MOTION]() {
 
+    },
+    [EVENTS.CANVAS_EVENT]({ e, rect }) {
+        e.target = {
+            getBoundingClientRect() {
+                return rect
+            }
+        }
+        switch (e.type) {
+            case 'touchstart': LAppDelegate.onTouchBegan(e); break;
+            case 'touchmove': LAppDelegate.onTouchMoved(e); break;
+            case 'touchend': LAppDelegate.onTouchEnded(e); break;
+            case 'touchcancel': LAppDelegate.onTouchCancel(e); break;
+            case 'mousedown': LAppDelegate.onClickBegan(e); break;
+            case 'mousemove': LAppDelegate.onMouseMoved(e); break;
+            case 'mouseup': LAppDelegate.onClickEnded(e); break;
+        }
     }
 }
 

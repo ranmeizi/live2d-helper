@@ -4,7 +4,7 @@ import dts from "rollup-plugin-dts";
 
 const plugin = [
   typescript(),
-  terser()
+  // terser()
 ];
 const config = [
   {

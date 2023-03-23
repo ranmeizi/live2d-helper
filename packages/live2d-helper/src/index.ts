@@ -27,11 +27,55 @@ export default class ModelHelper {
         }
 
         const offscreen = canvas.transferControlToOffscreen()
+        // 监听事件
+        this.addEvent(canvas)
+
         this.worker = new Worker(this.workerPath)
         this.worker.postMessage({
             type: EVENTS.INIT,
             canvas: offscreen
         }, [offscreen]);
+    }
+
+    addEvent(canvas: HTMLCanvasElement) {
+        // 鼠标事件
+        canvas.addEventListener('mousedown', this.TransportEvent)
+        canvas.addEventListener('mousemove', this.TransportEvent)
+        canvas.addEventListener('mouseup', this.TransportEvent)
+        // 触摸事件
+        canvas.addEventListener('touchstart', this.TransportEvent)
+        canvas.addEventListener('touchmove', this.TransportEvent)
+        canvas.addEventListener('touchend', this.TransportEvent)
+        canvas.addEventListener('touchcancel', this.TransportEvent)
+    }
+
+    removeEvent(canvas: HTMLCanvasElement) {
+        // 鼠标事件
+        canvas.removeEventListener('mousedown', this.TransportEvent)
+        canvas.removeEventListener('mousemove', this.TransportEvent)
+        canvas.removeEventListener('mouseup', this.TransportEvent)
+        // 触摸事件
+        canvas.removeEventListener('touchstart', this.TransportEvent)
+        canvas.removeEventListener('touchmove', this.TransportEvent)
+        canvas.removeEventListener('touchend', this.TransportEvent)
+        canvas.removeEventListener('touchcancel', this.TransportEvent)
+    }
+
+    TransportEvent = (e) => {
+        const event = {}
+        for (let prop in e) {
+            if (typeof e[prop] !== 'function' && typeof e[prop] !== 'object') {
+                event[prop] = e[prop]
+            }
+        }
+        // 获取 rect
+        const rect = (e.target as Element).getBoundingClientRect();
+
+        this.worker.postMessage({
+            type: EVENTS.CANVAS_EVENT,
+            e: event,
+            rect
+        })
     }
 
 

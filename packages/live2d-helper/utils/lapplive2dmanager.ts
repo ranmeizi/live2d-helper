@@ -32,7 +32,7 @@ export class LAppLive2DManager {
     if (s_instance == null) {
       s_instance = new LAppLive2DManager();
     }
-
+    self.modelInstance = s_instance
     return s_instance;
   }
 
