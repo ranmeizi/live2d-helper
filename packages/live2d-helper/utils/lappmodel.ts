@@ -8,32 +8,32 @@
 
 import * as wf from 'whatwg-fetch';
 
-import { CubismDefaultParameterId } from 'framework/src/cubismdefaultparameterid';
-import { CubismModelSettingJson } from 'framework/src/cubismmodelsettingjson';
+import { CubismDefaultParameterId } from 'framework/cubismdefaultparameterid';
+import { CubismModelSettingJson } from 'framework/cubismmodelsettingjson';
 import {
   BreathParameterData,
   CubismBreath
-} from 'framework/src/effect/cubismbreath';
-import { CubismEyeBlink } from 'framework/src/effect/cubismeyeblink';
-import { ICubismModelSetting } from 'framework/src/icubismmodelsetting';
-import { CubismIdHandle } from 'framework/src/id/cubismid';
-import { CubismFramework } from 'framework/src/live2dcubismframework';
-import { CubismMatrix44 } from 'framework/src/math/cubismmatrix44';
-import { CubismUserModel } from 'framework/src/model/cubismusermodel';
+} from 'framework/effect/cubismbreath';
+import { CubismEyeBlink } from 'framework/effect/cubismeyeblink';
+import { ICubismModelSetting } from 'framework/icubismmodelsetting';
+import { CubismIdHandle } from 'framework/id/cubismid';
+import { CubismFramework } from 'framework/live2dcubismframework';
+import { CubismMatrix44 } from 'framework/math/cubismmatrix44';
+import { CubismUserModel } from 'framework/model/cubismusermodel';
 import {
   ACubismMotion,
   FinishedMotionCallback
-} from 'framework/src/motion/acubismmotion';
-import { CubismMotion } from 'framework/src/motion/cubismmotion';
+} from 'framework/motion/acubismmotion';
+import { CubismMotion } from 'framework/motion/cubismmotion';
 import {
   CubismMotionQueueEntryHandle,
   InvalidMotionQueueEntryHandleValue
-} from 'framework/src/motion/cubismmotionqueuemanager';
-import { csmMap } from 'framework/src/type/csmmap';
-import { csmRect } from 'framework/src/type/csmrectf';
-import { csmString } from 'framework/src/type/csmstring';
-import { csmVector } from 'framework/src/type/csmvector';
-import { CubismLogError, CubismLogInfo } from 'framework/src/utils/cubismdebug';
+} from 'framework/motion/cubismmotionqueuemanager';
+import { csmMap } from 'framework/type/csmmap';
+import { csmRect } from 'framework/type/csmrectf';
+import { csmString } from 'framework/type/csmstring';
+import { csmVector } from 'framework/type/csmvector';
+import { CubismLogError, CubismLogInfo } from 'framework/utils/cubismdebug';
 
 import * as LAppDefine from './lappdefine';
 import { canvas, frameBuffer, gl, LAppDelegate } from './lappdelegate';

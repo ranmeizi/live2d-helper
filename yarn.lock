@@ -1006,6 +1006,18 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
+"@bomon/live2d-helper@0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@bomon/live2d-helper/-/live2d-helper-0.0.1.tgz#c54f90938aca7ea7dd04a7b9b1d3f95eb6f9bd36"
+  integrity sha512-+h6VCaEx4fEggNX8PzdwfZBEAHSywhqNZEINhVBtc6o+ahqcJrwm3Wbfa7RpLId88D47R8j6TpHwOgYt6HTiPA==
+  dependencies:
+    "@rollup/plugin-terser" "^0.4.0"
+    framework "1.0.0"
+    rollup "^3.20.0"
+    rollup-plugin-dts "^5.3.0"
+    rollup-plugin-typescript2 "^0.34.1"
+    whatwg-fetch "^3.6.2"
+
 "@bomon/webpack-runner@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@bomon/webpack-runner/-/webpack-runner-1.0.3.tgz#7bca54c84ac2ebf9f0e3922bd65113c6c3243eab"
@@ -1176,6 +1188,13 @@
   dependencies:
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
+
+"@rollup/plugin-alias@^4.0.3":
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-alias/-/plugin-alias-4.0.3.tgz#571f6fb26387df91d0363905a7fd835757727ae2"
+  integrity sha512-ZuDWE1q4PQDhvm/zc5Prun8sBpLJy41DMptYrS6MhAy9s9kL/doN1613BWfEchGVfKxzliJ3BjbOPizXX38DbQ==
+  dependencies:
+    slash "^4.0.0"
 
 "@rollup/plugin-terser@^0.4.0":
   version "0.4.0"
@@ -4567,6 +4586,11 @@ slash@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
+
+slash@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/slash/-/slash-4.0.0.tgz#2422372176c4c6c5addb5e2ada885af984b396a7"
+  integrity sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==
 
 smob@^0.0.6:
   version "0.0.6"

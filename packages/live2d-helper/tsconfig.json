@@ -7,8 +7,9 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "emitDecoratorMetadata": true,
+    "baseUrl": "./src",
     "paths": {
-      "components": ["../packages/framwork/src"]
+      "framework/*":["../../Framework/src/*"]
     }
   },
   "include": [
@@ -16,15 +17,3 @@
     "../Core/*.ts"
   ]
 }
-// {
-//   "compilerOptions": {
-//     "target": "es2016",
-//     "module": "ESNext",
-//     "moduleResolution": "node",
-//     "esModuleInterop": true,
-//     "forceConsistentCasingInFileNames": true,
-//     "strict": true,
-//     "skipLibCheck": true,
-//     "declaration": true
-//   }
-// }

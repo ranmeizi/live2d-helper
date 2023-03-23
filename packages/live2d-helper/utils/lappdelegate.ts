@@ -5,7 +5,7 @@
  * that can be found at https://www.live2d.com/eula/live2d-open-software-license-agreement_en.html.
  */
 
-import { CubismFramework, Option } from 'framework/src/live2dcubismframework';
+import { CubismFramework, Option } from 'framework/live2dcubismframework';
 
 import * as LAppDefine from './lappdefine';
 import { LAppLive2DManager } from './lapplive2dmanager';

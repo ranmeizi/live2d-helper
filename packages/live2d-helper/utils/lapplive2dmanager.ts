@@ -6,9 +6,9 @@
  * that can be found at https://www.live2d.com/eula/live2d-open-software-license-agreement_en.html.
  */
 
-import { CubismMatrix44 } from 'framework/src/math/cubismmatrix44';
-import { ACubismMotion } from 'framework/src/motion/acubismmotion';
-import { csmVector } from 'framework/src/type/csmvector';
+import { CubismMatrix44 } from 'framework/math/cubismmatrix44';
+import { ACubismMotion } from 'framework/motion/acubismmotion';
+import { csmVector } from 'framework/type/csmvector';
 
 import * as LAppDefine from './lappdefine';
 import { canvas } from './lappdelegate';
