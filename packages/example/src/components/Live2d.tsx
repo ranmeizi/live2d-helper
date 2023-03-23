@@ -1,5 +1,5 @@
 import React, { useEffect, useRef} from "react";
-import ModelHelper from "live2d-helper";
+import ModelHelper from "@bomon/live2d-helper";
 
 export default function Live2d() {
   const canvasRef = useRef<HTMLCanvasElement>(null);

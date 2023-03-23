@@ -11,9 +11,9 @@
     "build": "cross-env NODE_ENV=production node runner.cjs"
   },
   "dependencies": {
+    "@bomon/live2d-helper": "0.0.1",
     "@bomon/webpack-runner": "^1.0.3",
     "cross-env": "^7.0.3",
-    "live2d-helper": "1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

@@ -1,5 +1,5 @@
 Arguments: 
-  D:\soft\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\nvm\v16.19.0\node_modules\yarn\lib\cli.js add liv2d-helper@1.0.0
+  D:\soft\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\nvm\v16.19.0\node_modules\yarn\lib\cli.js add @bomon/live2d-helper
 
 PATH: 
   C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;D:\soft\Git\cmd;D:\soft\nvm;C:\Users\Administrator\AppData\Roaming\nvm;D:\soft\nodejs;D:\soft\Microsoft VS Code\bin;D:\soft\python\Scripts\;D:\soft\python\;C:\Users\Administrator\.cargo\bin;C:\Users\Administrator\AppData\Local\pnpm;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\soft\Microsoft VS Code\bin;C:\Users\Administrator\AppData\Roaming\nvm;D:\soft\nodejs
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/liv2d-helper: Not found
+  Error: https://registry.yarnpkg.com/@bomon%2flive2d-helper: Not found
       at Request.params.callback [as _callback] (C:\Users\Administrator\AppData\Roaming\nvm\v16.19.0\node_modules\yarn\lib\cli.js:66145:18)
       at Request.self.callback (C:\Users\Administrator\AppData\Roaming\nvm\v16.19.0\node_modules\yarn\lib\cli.js:140890:22)
       at Request.emit (node:events:513:28)

@@ -10,7 +10,7 @@
 ### run
 
 build live2d-helper  
-``` yarn workspace live2d-helper build ```  
+``` yarn workspace @bomon/live2d-helper build ```  
 run example  
 ``` yarn workspace example start ```
 

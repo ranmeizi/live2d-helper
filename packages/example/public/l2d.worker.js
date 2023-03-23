@@ -13672,7 +13672,7 @@ class LAppDelegate {
         canvas = offscreenCanvas;
         // glコンテキストを初期化
         // @ts-ignore
-        gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        gl = canvas.getContext('webgl', { alpha: true }) || canvas.getContext('experimental-webgl', { alpha: true });
         if (!gl) {
             alert('Cannot initialize WebGL. This browser does not support.');
             gl = null;
@@ -13687,19 +13687,6 @@ class LAppDelegate {
         // 透過設定
         gl.enable(gl.BLEND);
         gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-        // const supportTouch: boolean = 'ontouchend' in canvas;
-        // if (supportTouch) {
-        //   // タッチ関連コールバック関数登録
-        //   canvas.ontouchstart = onTouchBegan;
-        //   canvas.ontouchmove = onTouchMoved;
-        //   canvas.ontouchend = onTouchEnded;
-        //   canvas.ontouchcancel = onTouchCancel;
-        // } else {
-        //   // マウス関連コールバック関数登録
-        //   canvas.onmousedown = onClickBegan;
-        //   canvas.onmousemove = onMouseMoved;
-        //   canvas.onmouseup = onClickEnded;
-        // }
         // AppViewの初期化
         this._view.initialize();
         // Cubism SDKの初期化
@@ -13712,7 +13699,7 @@ class LAppDelegate {
     onResize() {
         this._resizeCanvas();
         this._view.initialize();
-        this._view.initializeSprite();
+        // this._view!.initializeSprite();
         // キャンバスサイズを渡す
         const viewport = [0, 0, canvas.width, canvas.height];
         gl.viewport(viewport[0], viewport[1], viewport[2], viewport[3]);
@@ -13743,7 +13730,7 @@ class LAppDelegate {
             // 時間更新
             LAppPal.updateTime();
             // 画面の初期化
-            gl.clearColor(0.0, 0.0, 0.0, 1.0);
+            gl.clearColor(0.0, 0.0, 0.0, 0);
             // 深度テストを有効化
             gl.enable(gl.DEPTH_TEST);
             // 近くにある物体は、遠くにある物体を覆い隠す
@@ -13843,7 +13830,7 @@ class LAppDelegate {
         // initialize cubism
         CubismFramework.initialize();
         LAppPal.updateTime();
-        this._view.initializeSprite();
+        // this._view!.initializeSprite();
     }
     /**
      * Resize the canvas to fill the screen.
@@ -13968,7 +13955,6 @@ const controllers = {
             return;
         }
         LAppDelegate.getInstance().run();
-        console.log(LAppDelegate.getInstance(), 'KANKAN');
         // @ts-ignore
         self.__kankan = LAppDelegate.getInstance();
     },
@@ -13976,6 +13962,7 @@ const controllers = {
         LAppLive2DManager.getInstance()._custChangeScene({ name, resourcePath });
     },
     [DO_MOTION]() {
+        // TODO
     },
     [CANVAS_EVENT]({ e, rect }) {
         e.target = {
